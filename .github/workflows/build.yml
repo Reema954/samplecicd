@@ -53,16 +53,20 @@ jobs:
             echo "Deploying to Sandbox Environment"
             mvn deploy -DmuleDeploy \
               -DskipExchangePreDeploy=false \
-              -Danypoint.username=${{ secrets.ANYPOINT_USERNAME_SANDBOX }} \
-              -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD_SANDBOX }} \
-              -Ddeploy.environment=Sandbox
+              -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} \
+              -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} \
+              -Ddeploy.environment=Sandbox \
+              -Danypointplatform.id=a9878feeb0c143708b452952d9a6b49d
+              -Danypointplatform.secret=5AAC519C7D9e4375aa1cA3f693AFA71d
           elif [[ "${GITHUB_REF##*/}" == "dev" ]]; then
             echo "Deploying to Dev Environment"
             mvn deploy -DmuleDeploy \
               -DskipExchangePreDeploy=false \
-              -Danypoint.username=${{ secrets.ANYPOINT_USERNAME_DEV }} \
-              -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD_DEV }} \
+              -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} \
+              -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} \
               -Ddeploy.environment=dev
+               -Danypointplatform.id=2672e19c47fb486f9d20711e85f915e4
+              -Danypointplatform.secret=7979f647C7b14A9DbbeEe97b07c6b08D
           else
             echo "No deployment environment configured for this branch."
             exit 1
