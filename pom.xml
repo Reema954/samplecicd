@@ -44,8 +44,8 @@
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<properties>
-							<anypoint.platfrom.client_id>a9878feeb0c143708b452952d9a6b49d</anypoint.platfrom.client_id>
-							<anypoint.platform.client_secret>5AAC519C7D9e4375aa1cA3f693AFA71d</anypoint.platform.client_secret>
+							<anypoint.platfrom.client_id>${anypointplatform.id}</anypoint.platfrom.client_id>
+							<anypoint.platform.client_secret>${anypointplatform.secret}</anypoint.platform.client_secret>
 						</properties>
 						
 						<integrations>
