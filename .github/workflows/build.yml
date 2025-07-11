@@ -45,7 +45,7 @@ jobs:
         run: mvn clean package -DmuleDeploy
 
       - name: Publish to Exchange
-        run: mvn deploy -DskipTests
+        run:  mvn deploy -e -X -DskipTests
 
       - name: Deploy to CloudHub 2.0 - Branch based
         run: |
