@@ -39,6 +39,29 @@ jobs:
                 <password>${{ secrets.CLIENT_ID }}~?~${{ secrets.CLIENT_SECRET }}</password>
               </server>
             </servers>
+            <profiles>
+              <profile>
+                <id>sandbox</id>
+                <properties>
+                  <anypoint.username>${env.ANYPOINT_USERNAME}</anypoint.username>
+                  <anypoint.password>${env.ANYPOINT_PASSWORD}</anypoint.password>
+                  <deploy.environment>Sandbox</deploy.environment>
+                  <anypointplatform.id>a9878feeb0c143708b452952d9a6b49d</anypointplatform.id>
+                  <anypointplatform.secret>5AAC519C7D9e4375aa1cA3f693AFA71d</anypointplatform.secret>
+              </properties>
+            </profile>
+
+            <profile>
+              <id>development</id>
+              <properties>
+                  <anypoint.username>${env.ANYPOINT_USERNAME}</anypoint.username>
+                  <anypoint.password>${env.ANYPOINT_PASSWORD}</anypoint.password>
+                  <deploy.environment>development</deploy.environment>
+                  <anypointplatform.id>2672e19c47fb486f9d20711e85f915e4</anypointplatform.id>
+                  <anypointplatform.secret>7979f647C7b14A9DbbeEe97b07c6b08D</anypointplatform.secret>
+              </properties>
+            </profile>
+          </profiles>
           </settings>" > ~/.m2/settings.xml
 
       - name: Package Application
@@ -60,7 +83,7 @@ jobs:
               -Danypointplatform.secret=5AAC519C7D9e4375aa1cA3f693AFA71d
           elif [[ "${GITHUB_REF##*/}" == "dev" ]]; then
             echo "Deploying to Dev Environment"
-            mvn deploy -DmuleDeploy \
+            mvn deploy -P development -DmuleDeploy \
               -DskipExchangePreDeploy=false \
               -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} \
               -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} \
