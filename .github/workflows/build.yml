@@ -64,7 +64,7 @@ jobs:
               -DskipExchangePreDeploy=false \
               -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} \
               -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} \
-              -Ddeploy.environment=dev \
+              -Ddeploy.environment=development \
               -Danypointplatform.id=2672e19c47fb486f9d20711e85f915e4 -Danypointplatform.secret=7979f647C7b14A9DbbeEe97b07c6b08D -e -X
           else
             echo "No deployment environment configured for this branch."
